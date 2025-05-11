@@ -1,10 +1,11 @@
+/* General Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Orbitron', sans-serif;
   background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
   color: #f5f5f5;
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   position: relative;
 }
 
@@ -27,7 +28,7 @@ p {
   color: #ccc;
 }
 
-/* Start screen */
+/* Start Screen */
 .start-screen {
   display: flex;
   flex-direction: column;
@@ -51,6 +52,8 @@ button {
   box-shadow: 0 0 15px #ff4081;
   transition: all 0.3s ease;
   z-index: 20; /* Ensuring button is on top */
+  width: 60%; /* Makes the button wide enough on mobile */
+  max-width: 250px; /* Limits the width on large screens */
 }
 
 button:hover {
@@ -58,10 +61,10 @@ button:hover {
   box-shadow: 0 0 25px #ff1493;
 }
 
-/* Slideshow section */
+/* Slideshow Section */
 .slideshow {
   width: 100%;
-  height: 100vh; /* Ensure slideshow fills the screen */
+  height: 70vh; /* Adjusted height for mobile */
   margin: 0 auto;
   border: 2px solid #ff4081;
   padding: 10px;
@@ -89,7 +92,7 @@ button:hover {
   transition: opacity 1s ease-in-out;
 }
 
-/* Loading spinner */
+/* Loading Spinner */
 .loader {
   position: fixed;
   top: 0;
@@ -132,8 +135,12 @@ canvas#fireworks {
 
 /* Mobile Devices */
 @media (max-width: 767px) {
+  body {
+    font-size: 16px;
+  }
+
   h1 {
-    font-size: 2rem; /* Smaller font size for mobile */
+    font-size: 2rem; /* Smaller heading for mobile */
   }
 
   p {
@@ -141,20 +148,14 @@ canvas#fireworks {
   }
 
   .slideshow {
-    height: 70vh; /* Slideshow takes up 70% of the screen height on mobile */
-  }
-
-  .slideshow-wrapper {
-    height: 100%;
-  }
-
-  .slideshow-img {
-    object-position: center center;
+    height: 60vh; /* Slideshow takes up 60% of the screen height on mobile */
   }
 
   button {
-    font-size: 1rem; /* Smaller button text */
-    padding: 10px 20px; /* Adjust button size for mobile */
+    font-size: 1.2rem; /* Button font size optimized for mobile */
+    padding: 15px; /* Adjusted padding */
+    width: 80%; /* Button width adjusted for smaller screens */
+    max-width: 300px; /* Maximum width to prevent excessive scaling */
   }
 }
 
@@ -169,21 +170,18 @@ canvas#fireworks {
   }
 
   .slideshow {
-    height: 80vh; /* Slideshow takes up 80% of the screen height on tablets and desktops */
+    height: 80vh; /* Slideshow takes up 80% of the screen height */
   }
 
-  .slideshow-wrapper {
-    height: 100%;
-  }
-
-  .slideshow-img {
-    object-position: center;
+  button {
+    font-size: 1.2rem; /* Button font size optimized for larger screens */
+    width: 40%; /* Button width for larger screens */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+/* Ensuring the viewport meta tag is included in HTML */
+@media screen {
+  html {
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling on page load */
+  }
 }
