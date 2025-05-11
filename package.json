@@ -9,11 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "canvas-confetti": "^1.9.3",
     "fireworks-js": "^2.10.8",
-=======
->>>>>>> af99bdc (Resolve merge conflicts and keep local version)
     "mothers-day-website": "file:",
     "next": "15.3.2",
     "react": "^19.0.0",
