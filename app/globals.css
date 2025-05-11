@@ -1,26 +1,177 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+  color: #f5f5f5;
+  overflow: hidden;
+  position: relative;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.container {
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+h1 {
+  font-size: 3rem;
+  color: #ff4081;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+/* Start screen */
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+button {
+  background: #ff4081;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 15px #ff4081;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff1493;
+}
+
+/* Slideshow section */
+.slideshow {
+  width: 100%;
+  height: 100vh; /* Ensure slideshow fills the screen */
+  margin: 0 auto;
+  border: 2px solid #ff4081;
+  padding: 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 64, 129, 0.1);
+  position: relative;
+}
+
+/* Ensure images fill the container */
+.slideshow-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.slideshow-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fully covers the container */
+  object-position: center;
+  border-radius: 12px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Loading spinner */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader .spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #ff4081;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fireworks Canvas */
+canvas#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Styles for Mobile and Desktop */
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2rem; /* Smaller font size for mobile */
+  }
+
+  p {
+    font-size: 1rem; /* Smaller paragraph font size */
+  }
+
+  .slideshow {
+    height: 70vh; /* Slideshow takes up 70% of the screen height on mobile */
+  }
+
+  .slideshow-wrapper {
+    height: 100%; /* Ensure wrapper uses full height */
+  }
+
+  .slideshow-img {
+    object-position: center center; /* Make sure the image is centered */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Tablets and Larger Devices */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem; /* Larger heading for tablets and desktop */
+  }
+
+  p {
+    font-size: 1.2rem; /* Default font size */
+  }
+
+  .slideshow {
+    height: 80vh; /* Slideshow takes up 80% of the screen height on tablets and desktops */
+  }
+
+  .slideshow-wrapper {
+    height: 100%;
+  }
+
+  .slideshow-img {
+    object-position: center; /* Ensure the image is centered */
+  }
 }
